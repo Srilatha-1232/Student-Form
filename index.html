@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #178476;
+        }
+
+        h1 {
+            text-align: center;
+            font-family: Georgia, serif;
+            color: black;
+            margin: 15px 0 10px;
+        }
+
+        .form-container {
+            width: 540px;
+            margin: auto;
+            background-color: #e9edf3;
+            padding: 30px 25px;
+            border-radius: 4px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .form-row label {
+            width: 120px;
+            font-weight: bold;
+            font-family: Georgia, serif;
+        }
+
+        .form-row input[type="text"],
+        .form-row input[type="email"],
+        .form-row input[type="tel"],
+        .form-row input[type="date"],
+        .form-row select,
+        .form-row textarea {
+            width: 270px;
+            padding: 10px;
+            border: none;
+            border-bottom: 1px solid #aaa;
+            outline: none;
+            background-color: #fffafa;
+        }
+
+        .gender {
+            display: flex;
+            gap: 30px;
+        }
+
+        .gender label {
+            width: auto;
+            font-weight: normal;
+            font-family: Arial, sans-serif;
+        }
+
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .textarea-row {
+            align-items: center;
+        }
+
+        .button-row {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        button {
+            width: 110px;
+            padding: 10px;
+            background-color: #080d32;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #151d58;
+        }
+
+        .error {
+            color: red;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Student Registration Form</h1>
+
+<div class="form-container">
+
+    <form id="registrationForm" onsubmit="return validateForm()">
+
+        <!-- First Name -->
+        <div class="form-row">
+            <label>First Name:</label>
+            <input type="text" id="firstName"
+                   placeholder="Enter Your First Name">
+        </div>
+
+        <!-- Last Name -->
+        <div class="form-row">
+            <label>Last Name:</label>
+            <input type="text" id="lastName"
+                   placeholder="Enter Your Last Name">
+        </div>
+
+        <!-- Date of Birth -->
+        <div class="form-row">
+            <label>Date of Birth:</label>
+            <input type="date" id="dob">
+        </div>
+
+        <!-- Email -->
+        <div class="form-row">
+            <label>Email Id:</label>
+            <input type="email" id="email"
+                   placeholder="Enter Your Email Id">
+        </div>
+
+        <!-- Mobile -->
+        <div class="form-row">
+            <label>Mobile No.:</label>
+            <input type="tel" id="mobile"
+                   placeholder="Enter your mobile number">
+        </div>
+
+        <!-- Gender -->
+        <div class="form-row">
+            <label>Gender:</label>
+
+            <div class="gender">
+                <label>
+                    <input type="radio" name="gender" value="Male">
+                    Male
+                </label>
+
+                <label>
+                    <input type="radio" name="gender" value="Female">
+                    Female
+                </label>
+            </div>
+        </div>
+
+        <!-- Country -->
+        <div class="form-row">
+            <label>Country:</label>
+
+            <select id="country" onchange="loadStates()">
+                <option value="">Select Country</option>
+                <option value="India">India</option>
+                <option value="USA">USA</option>
+                <option value="UK">UK</option>
+            </select>
+        </div>
+
+        <!-- State -->
+        <div class="form-row">
+            <label>State:</label>
+
+            <select id="state" onchange="loadDistricts()">
+                <option value="">Please select country first</option>
+            </select>
+        </div>
+
+        <!-- Address -->
+        <div class="form-row">
+            <label>Address:</label>
+            <input type="text" id="address"
+                   placeholder="Enter Your Address">
+        </div>
+
+        <!-- Pin Code -->
+        <div class="form-row">
+            <label>Pin Code:</label>
+            <input type="text" id="pincode"
+                   placeholder="Enter Your Pin Code">
+        </div>
+
+        <!-- City -->
+        <div class="form-row">
+            <label>City:</label>
+            <input type="text" id="city"
+                   placeholder="Enter Your City">
+        </div>
+
+        <!-- District -->
+        <div class="form-row">
+            <label>District:</label>
+
+            <select id="district">
+                <option value="">Please select state first</option>
+            </select>
+        </div>
+
+        <!-- Hobbies -->
+        <div class="form-row textarea-row">
+            <label>Hobbies:</label>
+
+            <textarea id="hobbies"
+                      placeholder="Enter Your Hobbies"></textarea>
+        </div>
+
+        <!-- Submit -->
+        <div class="button-row">
+            <button type="submit">Submit</button>
+        </div>
+
+    </form>
+
+</div>
+
+
+<script>
+
+    // Country -> State
+    function loadStates() {
+
+        let country = document.getElementById("country").value;
+        let state = document.getElementById("state");
+
+        state.innerHTML = "";
+
+        if (country === "India") {
+
+            state.innerHTML = `
+                <option value="">Select State</option>
+                <option value="Telangana">Telangana</option>
+                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                <option value="Karnataka">Karnataka</option>
+                <option value="Tamil Nadu">Tamil Nadu</option>
+            `;
+
+        }
+
+        else if (country === "USA") {
+
+            state.innerHTML = `
+                <option value="">Select State</option>
+                <option value="California">California</option>
+                <option value="Texas">Texas</option>
+                <option value="Florida">Florida</option>
+            `;
+
+        }
+
+        else if (country === "UK") {
+
+            state.innerHTML = `
+                <option value="">Select Region</option>
+                <option value="England">England</option>
+                <option value="Scotland">Scotland</option>
+                <option value="Wales">Wales</option>
+            `;
+
+        }
+
+        else {
+
+            state.innerHTML =
+                `<option value="">Please select country first</option>`;
+        }
+    }
+
+
+    // State -> District
+    function loadDistricts() {
+
+        let state = document.getElementById("state").value;
+        let district = document.getElementById("district");
+
+        district.innerHTML = "";
+
+        if (state === "Telangana") {
+
+            district.innerHTML = `
+                <option value="">Select District</option>
+                <option value="Hyderabad">Hyderabad</option>
+                <option value="Rangareddy">Rangareddy</option>
+                <option value="Medchal">Medchal</option>
+                <option value="Warangal">Warangal</option>
+                <option value="Nalgonda">Nalgonda</option>
+            `;
+
+        }
+
+        else if (state === "Andhra Pradesh") {
+
+            district.innerHTML = `
+                <option value="">Select District</option>
+                <option value="Guntur">Guntur</option>
+                <option value="Krishna">Krishna</option>
+                <option value="NTR">NTR</option>
+                <option value="Visakhapatnam">Visakhapatnam</option>
+                <option value="Nellore">Nellore</option>
+            `;
+
+        }
+
+        else {
+
+            district.innerHTML = `
+                <option value="">Select District</option>
+                <option value="Other">Other</option>
+            `;
+        }
+    }
+
+
+    // Form Validation
+    function validateForm() {
+
+        let firstName = document.getElementById("firstName").value.trim();
+        let lastName = document.getElementById("lastName").value.trim();
+        let dob = document.getElementById("dob").value;
+        let email = document.getElementById("email").value.trim();
+        let mobile = document.getElementById("mobile").value.trim();
+        let country = document.getElementById("country").value;
+        let state = document.getElementById("state").value;
+        let address = document.getElementById("address").value.trim();
+        let pincode = document.getElementById("pincode").value.trim();
+        let city = document.getElementById("city").value.trim();
+        let district = document.getElementById("district").value;
+
+        let gender = document.querySelector(
+            'input[name="gender"]:checked'
+        );
+
+
+        // First Name
+        if (firstName === "") {
+            alert("Please enter your first name");
+            return false;
+        }
+
+
+        // Last Name
+        if (lastName === "") {
+            alert("Please enter your last name");
+            return false;
+        }
+
+
+        // Date of Birth
+        if (dob === "") {
+            alert("Please select your date of birth");
+            return false;
+        }
+
+
+        // Email
+        if (email === "") {
+            alert("Please enter your email");
+            return false;
+        }
+
+
+        // Mobile Number
+        if (!/^[0-9]{10}$/.test(mobile)) {
+            alert("Mobile number must contain exactly 10 digits");
+            return false;
+        }
+
+
+        // Gender
+        if (!gender) {
+            alert("Please select your gender");
+            return false;
+        }
+
+
+        // Country
+        if (country === "") {
+            alert("Please select your country");
+            return false;
+        }
+
+
+        // State
+        if (state === "") {
+            alert("Please select your state");
+            return false;
+        }
+
+
+        // Address
+        if (address === "") {
+            alert("Please enter your address");
+            return false;
+        }
+
+
+        // Pin Code
+        if (!/^[0-9]{6}$/.test(pincode)) {
+            alert("Pin code must contain exactly 6 digits");
+            return false;
+        }
+
+
+        // City
+        if (city === "") {
+            alert("Please enter your city");
+            return false;
+        }
+
+
+        // District
+        if (district === "") {
+            alert("Please select your district");
+            return false;
+        }
+
+
+        alert("Registration Successful!");
+
+        return false;
+    }
+
+</script>
+
+</body>
+</html>
