@@ -2,6 +2,9 @@
 
 A responsive Student Registration Form built using **HTML, CSS, and JavaScript**. It allows users to enter their personal and contact details with form validation.
 
+🌐 Live Demo
+https://srilatha-1232.github.io/Student-Form/
+
 ## ✨ Features
 
 - Student first name and last name
