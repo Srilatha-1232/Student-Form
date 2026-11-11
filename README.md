@@ -1,26 +1,29 @@
-# 📝 Student Registration Form
+# Student Registration Form
 
-A simple and interactive Student Registration Form developed using HTML, CSS, and JavaScript. This project allows users to enter their personal details and validate the information before submitting the form.
+A responsive Student Registration Form built using **HTML, CSS, and JavaScript**. It allows users to enter their personal and contact details with form validation.
 
-## 🌟 Features
+## 🌐 Live Demo
+
+**[Click here to view the Student Registration Form](https://srilatha-1232.github.io/Student-Registration-Form/)**
+
+## ✨ Features
 
 - Student first name and last name
-- Date of birth selection
-- Email ID validation
-- Mobile number validation
+- Date of birth
+- Email and mobile number
 - Gender selection
-- Dynamic Country and State dropdowns
-- Dynamic State and District dropdowns
-- Address and PIN code fields
-- Hobbies section
+- Country, state, and district dropdowns
+- Address, city, and pincode fields
+- Hobbies selection
 - JavaScript form validation
-- Registration success message
+- Registration success alert
+- Responsive form layout
 
 ## 🛠️ Technologies Used
 
-- HTML5 – Structure of the registration form
-- CSS3 – Styling and layout
-- JavaScript – Form validation and dynamic dropdowns
+- HTML5
+- CSS3
+- JavaScript
 
 ## 📂 Project Structure
 
@@ -31,53 +34,34 @@ Student-Registration-Form/
 └── README.md
 ```
 
-## 🚀 How to Run the Project
+## 🚀 How to Run Locally
 
 1. Clone this repository:
 
    ```bash
-   git clone YOUR_GITHUB_REPOSITORY_URL
+   git clone https://github.com/Srilatha-1232/Student-Registration-Form.git
    ```
 
-2. Open the project folder in Visual Studio Code.
-3. Open `index.html`.
-4. Run the file using Live Server.
-5. Fill in the registration form.
-6. Click Submit to validate the entered details.
+2. Open the project folder.
+3. Open `index.html` in your browser.
 
-## 📋 Form Validation
+## 📌 What I Learned
 
-The project includes the following validations:
-
-- First name cannot be empty.
-- Last name cannot be empty.
-- Date of birth is required.
-- Email is required.
-- Mobile number must contain exactly 10 digits.
-- Gender must be selected.
-- Country and state must be selected.
-- Address cannot be empty.
-- PIN code must contain exactly 6 digits.
-- City and district must be selected.
-
-## 🎯 Learning Outcomes
-
-- Understanding HTML forms
-- Working with different input types
-- CSS Flexbox layout
-- JavaScript DOM manipulation
-- JavaScript functions and conditional statements
-- Regular expressions for validation
-- Dynamic dropdown implementation
+- Creating forms using HTML
+- Styling forms using CSS
+- Using Flexbox for layout
+- Handling form events with JavaScript
+- Implementing basic form validation
+- Deploying a website using GitHub Pages
 
 ## 👩‍💻 Developer
 
 **Srilatha Mullamuri**
 
-- LinkedIn: https://www.linkedin.com/in/srilatha-mullamuri/
-- GitHub: https://github.com/Srilatha-1232
-- Portfolio: https://sri-1232.github.io/
+- [GitHub](https://github.com/Srilatha-1232)
+- [LinkedIn](https://www.linkedin.com/in/srilatha-mullamuri/)
+- [Portfolio](https://sri-1232.netlify.app/)
 
 ---
 
-⭐ Thank you for visiting my project!
+⭐ If you like this project, feel free to star the repository!
